@@ -1,5 +1,5 @@
 import {ScrollView, View, Text, TouchableOpacity} from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import _, {get, isNil} from 'lodash';
 import {useRoute} from '@react-navigation/native';
 import {getImageURI} from '../helpers/utils';
@@ -9,13 +9,17 @@ import {useSelector} from 'react-redux';
 import {toggleFavorite} from '../redux/booksSlice';
 import {useDispatch} from 'react-redux';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useNavigation} from '@react-navigation/native';
+import HorizontalLine from '../components/HorizontalLine';
+import {Comment} from '../helpers/types';
+import {DefaultComments} from '../helpers/data';
+import Comments from '../components/Comments';
 
 const BookDetailsScreen: React.FC = () => {
   const route = useRoute();
   const dispatch = useDispatch();
   const favorites = useSelector(state => state.books.favorites);
-  const navigation = useNavigation();
+  const [newComment, setNewComment] = useState('');
+  const [comments, setComments] = useState<Comment[]>(DefaultComments);
 
   const book = get(route, 'params.book');
   const isFavorite = favorites.some(
@@ -25,7 +29,16 @@ const BookDetailsScreen: React.FC = () => {
   const handleFavorite = () => {
     dispatch(toggleFavorite(book));
   };
-
+  const handleSubmitComment = () => {
+    if (newComment.trim() !== '') {
+      const updatedComments = [
+        {userName: 'guestUser', comment: newComment},
+        ...comments,
+      ];
+      setComments(updatedComments);
+      setNewComment('');
+    }
+  };
   return (
     <ScrollView contentContainerStyle={{flexGrow: 1}}>
       <View style={bookDetailsStyles.container}>
@@ -64,6 +77,13 @@ const BookDetailsScreen: React.FC = () => {
         <Text style={bookDetailsStyles.description}>
           Description: {book?.description}
         </Text>
+        <HorizontalLine />
+        <Comments
+          comments={comments}
+          handleSubmitComment={handleSubmitComment}
+          newComment={newComment}
+          setNewComment={setNewComment}
+        />
       </View>
     </ScrollView>
   );

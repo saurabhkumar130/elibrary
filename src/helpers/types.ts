@@ -19,3 +19,15 @@ export interface BookCardProps {
 export interface SearchBarProps {
   handleSearch: (query: string, page?: number, limit?: number) => void;
 }
+
+export interface Comment {
+  userName: string;
+  comment: string;
+}
+
+export interface CommentProps {
+  comments: Comment[];
+  newComment: string;
+  setNewComment: (comment: string) => void;
+  handleSubmitComment: () => void;
+}

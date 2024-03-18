@@ -57,3 +57,78 @@ export const serachBarStyles = StyleSheet.create({
     marginRight: 10,
   },
 });
+
+export const horizontalLinestyles = StyleSheet.create({
+  horizontalLine: {
+    borderWidth: 1,
+    borderColor: '#A9A9A9',
+    marginVertical: 30,
+    paddingHorizontal: 10,
+  },
+});
+
+export const commentStyles = StyleSheet.create({
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  commentInput: {
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 10,
+  },
+  commentButtonContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 10,
+  },
+  submitButton: {
+    backgroundColor: '#6666ff',
+    padding: 10,
+    width: '50%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    marginBottom: 10,
+  },
+  submitButtonText: {
+    color: 'white',
+    fontSize: 18,
+  },
+  commentsContainer: {
+    marginBottom: 20,
+  },
+  commentsTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  commentItem: {
+    padding: 10,
+    borderRadius: 4,
+  },
+  commentUserName: {
+    fontWeight: 'bold',
+  },
+  commentText: {
+    marginTop: -5,
+  },
+  lightGrayBackground: {
+    backgroundColor: '#F0F0F0',
+  },
+  midGrayBackground: {
+    backgroundColor: '#D3D3D3',
+  },
+  accountSection: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  commentSection: {
+    flexDirection: 'row',
+    marginTop: 10,
+    alignItems: 'center',
+  },
+});
