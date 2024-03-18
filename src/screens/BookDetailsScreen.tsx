@@ -8,8 +8,7 @@ import {bookDetailsStyles} from './styles';
 import {useSelector} from 'react-redux';
 import {toggleFavorite} from '../redux/booksSlice';
 import {useDispatch} from 'react-redux';
-import Favorite from '../assets/svg/heartFilled.svg';
-import UnFavorite from '../assets/svg/heart.svg';
+import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
 
 const BookDetailsScreen: React.FC = () => {
@@ -40,11 +39,16 @@ const BookDetailsScreen: React.FC = () => {
             }
             resizeMode="cover"
           />
-          {/* Favorite button */}
           <TouchableOpacity
-            style={[bookDetailsStyles.favoriteButton]}
+            style={[bookDetailsStyles.actionButton]}
             onPress={handleFavorite}>
-            {isFavorite ? <Favorite height={60} /> : <UnFavorite height={60} />}
+            {/* Favorite button */}
+            <MaterialCommunityIcon
+              name={isFavorite ? 'heart' : 'heart-outline'}
+              size={50}
+              color={'red'}
+              suppressHighlighting
+            />
           </TouchableOpacity>
         </View>
         <Text style={bookDetailsStyles.title}>{book.title}</Text>

@@ -78,7 +78,7 @@ const HomeScreen: React.FC = () => {
 
   return (
     <View style={homeScreenStyles.container}>
-      <Text style={homeScreenStyles.header}>List of Sci-Fi Books</Text>
+      <Text style={homeScreenStyles.header}>Top Books</Text>
       <SearchBar handleSearch={handleSearch} />
       {isLoading ? (
         <BookCardSkeleton />

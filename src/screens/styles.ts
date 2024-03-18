@@ -27,9 +27,10 @@ export const bookDetailsStyles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
   },
-  favoriteButton: {
+  actionButton: {
     padding: 10,
     marginTop: 10,
+    flexDirection: 'row',
   },
   favoriteButtonText: {
     color: 'white',
